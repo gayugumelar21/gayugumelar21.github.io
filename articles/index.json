@@ -1,0 +1,24 @@
+[
+  {
+    "slug": "tips-memulai-bug-bounty",
+    "title": "Tips Memulai Bug Bounty untuk Pemula",
+    "excerpt": "Panduan singkat langkah-langkah awal terjun ke dunia bug bounty: mindset, tools, dan platform yang bisa kamu coba.",
+    "cover": "assets/img/portfolio/jakgobugbounty_gayugumelar.jpg",
+    "category": "Cyber Security",
+    "tags": ["bug bounty", "pentest", "pemula"],
+    "author": "Gayu Gumelar",
+    "date": "2026-05-20",
+    "readingTime": 5
+  },
+  {
+    "slug": "dasar-seo-untuk-website",
+    "title": "Dasar SEO untuk Website Portfolio",
+    "excerpt": "Bagaimana membuat website portfolio kamu mudah ditemukan di Google: meta tag, struktur konten, dan kecepatan halaman.",
+    "cover": "assets/img/avataaars.svg",
+    "category": "SEO",
+    "tags": ["seo", "website", "optimasi"],
+    "author": "Gayu Gumelar",
+    "date": "2026-04-10",
+    "readingTime": 6
+  }
+]

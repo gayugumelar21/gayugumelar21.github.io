@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Editor — Gayu Gumelar</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Password gate (client-side, hanya penghalang ringan) -->
+  <script src="js/admin-gate.js"></script>
+</head>
+<body id="top">
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a class="brand" href="index.html">Gayu<span>Gumelar</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="articles.html">Artikel</a></li>
+        <li><a href="admin.html" class="active">Editor</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="admin-wrap">
+    <div class="section-head" style="text-align:left;margin-bottom:24px">
+      <div class="eyebrow">Editor Konten</div>
+      <h2>Tambah Artikel &amp; Sertifikat</h2>
+    </div>
+
+    <div class="alert alert-info">
+      <strong>Cara pakai (situs statis / GitHub Pages):</strong> Isi form di bawah, klik <em>Generate</em>,
+      lalu (1) simpan file <code>.md</code> ke folder <code>articles/</code>, dan (2) tempel entri JSON ke bagian
+      atas <code>articles/index.json</code> (artikel) atau <code>data/certificates.json</code> (sertifikat).
+      Commit &amp; push — selesai. Tidak perlu server/database.
+    </div>
+
+    <div class="admin-tabs">
+      <button class="admin-tab active" data-target="panel-article"><i class="fa-solid fa-newspaper"></i> Artikel</button>
+      <button class="admin-tab" data-target="panel-cert"><i class="fa-solid fa-award"></i> Sertifikat</button>
+    </div>
+
+    <!-- ===== ARTICLE PANEL ===== -->
+    <div class="admin-panel" id="panel-article">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Judul Artikel *</label>
+          <input type="text" id="a-title" placeholder="Tips Memulai Bug Bounty" />
+        </div>
+        <div class="form-group">
+          <label>Slug (URL)</label>
+          <input type="text" id="a-slug" placeholder="otomatis dari judul" />
+          <div class="hint">Nama file akan menjadi <code>slug.md</code></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Ringkasan (excerpt)</label>
+        <input type="text" id="a-excerpt" placeholder="Deskripsi singkat untuk kartu artikel" />
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Kategori</label>
+          <input type="text" id="a-category" placeholder="Cyber Security" />
+        </div>
+        <div class="form-group">
+          <label>Tags (pisah koma)</label>
+          <input type="text" id="a-tags" placeholder="bug bounty, pentest" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Gambar Cover (path)</label>
+          <input type="text" id="a-cover" placeholder="assets/img/portfolio/xxx.jpg" />
+        </div>
+        <div class="form-group">
+          <label>Penulis</label>
+          <input type="text" id="a-author" value="Gayu Gumelar" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Tanggal</label>
+          <input type="date" id="a-date" />
+        </div>
+        <div class="form-group">
+          <label>Estimasi Baca (menit)</label>
+          <input type="number" id="a-reading" value="5" min="1" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Isi Artikel (Markdown) *</label>
+        <textarea id="a-body" placeholder="# Judul&#10;&#10;Tulis artikel dalam format Markdown di sini..."># Judul Artikel
+
+Tulis paragraf pembuka di sini.
+
+## Sub Judul
+
+- Poin pertama
+- Poin kedua
+
+> Kutipan menarik.
+
+```
+contoh kode
+```
+</textarea>
+        <div class="hint">Mendukung Markdown: heading (#), list (-), tabel, kode (```), kutipan (&gt;), gambar, link.</div>
+      </div>
+      <button class="btn btn-primary" id="a-build"><i class="fa-solid fa-gears"></i> Generate</button>
+
+      <div id="a-output" style="display:none;margin-top:28px">
+        <h3 style="margin-bottom:6px">1. Simpan file: <code id="a-filename"></code></h3>
+        <div style="display:flex;gap:8px;margin:10px 0">
+          <button class="btn btn-outline" id="a-dl-md"><i class="fa-solid fa-download"></i> Download .md</button>
+          <button class="btn btn-outline" id="a-copy-md"><i class="fa-solid fa-copy"></i> Salin isi</button>
+        </div>
+        <div class="output-box" id="a-out-md"></div>
+
+        <h3 style="margin:24px 0 6px">2. Tempel ke atas <code>articles/index.json</code></h3>
+        <button class="btn btn-outline" id="a-copy-json"><i class="fa-solid fa-copy"></i> Salin JSON</button>
+        <div class="output-box" id="a-out-json"></div>
+      </div>
+    </div>
+
+    <!-- ===== CERTIFICATE PANEL ===== -->
+    <div class="admin-panel" id="panel-cert" style="display:none">
+      <div class="form-group">
+        <label>Judul Sertifikat *</label>
+        <input type="text" id="c-title" placeholder="Google Cyber Security Certificate" />
+      </div>
+      <div class="form-group">
+        <label>Path Gambar</label>
+        <input type="text" id="c-image" placeholder="assets/img/portfolio/xxx.jpg" />
+        <div class="hint">Letakkan file gambar di <code>assets/img/portfolio/</code> lebih dulu.</div>
+      </div>
+      <div class="form-group">
+        <label>Deskripsi</label>
+        <input type="text" id="c-desc" placeholder="Keterangan sertifikat" />
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Kategori</label>
+          <select id="c-category">
+            <option>Sertifikasi</option>
+            <option>Bug Bounty</option>
+            <option>Prestasi</option>
+            <option>Kursus</option>
+            <option>Pelatihan</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tahun</label>
+          <input type="text" id="c-year" placeholder="2024" />
+        </div>
+      </div>
+      <button class="btn btn-primary" id="c-build"><i class="fa-solid fa-gears"></i> Generate</button>
+
+      <div id="c-output" style="display:none;margin-top:28px">
+        <h3 style="margin-bottom:6px">Tempel ke atas array <code>data/certificates.json</code></h3>
+        <button class="btn btn-outline" id="c-copy-json"><i class="fa-solid fa-copy"></i> Salin JSON</button>
+        <div class="output-box" id="c-out-json"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer" id="footer"></footer>
+
+  <script src="js/site.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "name": "Gayu Gumelar",
+  "role": "Cyber Security Enthusiast & SEO Specialist",
+  "tagline": "Tenaga Ahli Cyber Security",
+  "avatar": "assets/img/pp2.jpg",
+  "location": "Gedong Tataan, Pesawaran, Lampung, Indonesia",
+  "email": "gayugumelar21@gmail.com",
+  "cv": "assets/img/portfolio/CV_Sertifikat_Gayu_Gumelar_TA_Kominfo.pdf",
+  "about": [
+    "Halo, saya Gayu Gumelar — seorang penggiat keamanan komputer & informasi.",
+    "Antusias di bidang Cyber Security dan SEO. Penulis blog pribadi yang berfokus pada identifikasi kerentanan keamanan di berbagai platform melalui riset dan penerapan best practice security engineering."
+  ],
+  "stats": [
+    { "label": "Sertifikat & Prestasi", "value": "18+" },
+    { "label": "Bug Bounty Program", "value": "6+" },
+    { "label": "Tahun Pengalaman", "value": "5+" }
+  ],
+  "social": [
+    { "icon": "fa-solid fa-envelope", "url": "mailto:gayugumelar21@gmail.com", "label": "Email" },
+    { "icon": "fa-brands fa-whatsapp", "url": "#", "label": "WhatsApp" },
+    { "icon": "fa-brands fa-github", "url": "https://github.com/gayugumelar21/", "label": "GitHub" },
+    { "icon": "fa-brands fa-youtube", "url": "https://www.youtube.com/channel/UCJwsnl19cpzOJGh_4EXvc5Q", "label": "YouTube" }
+  ]
+}

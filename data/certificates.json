@@ -1,0 +1,121 @@
+[
+  {
+    "title": "Google Cyber Security Certificate",
+    "image": "assets/img/portfolio/GoogleCybersecurityCertificate_GAYU_GUMELAR.jpg",
+    "description": "Google Cyber Security Certificate 2024.",
+    "category": "Sertifikasi",
+    "year": "2024"
+  },
+  {
+    "title": "Training For Trainers Kominfo",
+    "image": "assets/img/portfolio/Sertifikat_GAYU_GUMELAR_ToT Pelatihan Basic Cyber Security untuk Siswa SMA_ Sederajat.jpg",
+    "description": "Training For Trainers Kominfo RI 2024 — Pelatihan Basic Cyber Security untuk Siswa SMA/Sederajat.",
+    "category": "Pelatihan",
+    "year": "2024"
+  },
+  {
+    "title": "Certificate of Appreciation Bug Bounty — Kemenkes RI",
+    "image": "assets/img/portfolio/KemenkesRI_GayuGumelar.jpg",
+    "description": "Certificate of Appreciation Bug Bounty dari Kementerian Kesehatan RI 2024.",
+    "category": "Bug Bounty",
+    "year": "2024"
+  },
+  {
+    "title": "Certificate of Appreciation Bug Bounty — Universitas Brawijaya",
+    "image": "assets/img/portfolio/universitas-brawijaya-gayu-gumelar.jpg",
+    "description": "Certificate of Appreciation Bug Bounty dari Universitas Brawijaya 2023.",
+    "category": "Bug Bounty",
+    "year": "2023"
+  },
+  {
+    "title": "Certificate of Appreciation Bug Bounty — Dibimbing ID",
+    "image": "assets/img/portfolio/dibimbing-id-gayu-gumelar.jpg",
+    "description": "Certificate of Appreciation Bug Bounty dari Dibimbing ID 2023.",
+    "category": "Bug Bounty",
+    "year": "2023"
+  },
+  {
+    "title": "Certificate of Appreciation Bug Bounty — Diskominfotik DKI Jakarta",
+    "image": "assets/img/portfolio/jakgobugbounty_gayugumelar.jpg",
+    "description": "Certificate of Appreciation Bug Bounty dari Diskominfotik Prov DKI Jakarta 2023.",
+    "category": "Bug Bounty",
+    "year": "2023"
+  },
+  {
+    "title": "Bali Bug Bounty Program",
+    "image": "assets/img/portfolio/balibugbounty_gayugumelar.jpg",
+    "description": "Bali Bug Bounty Program Participant 2023.",
+    "category": "Bug Bounty",
+    "year": "2023"
+  },
+  {
+    "title": "Certificate of Appreciation Bug Bounty — Kreen Indonesia",
+    "image": "assets/img/portfolio/kreenbugbounty_gayugumelar.jpg",
+    "description": "Certificate of Appreciation Bug Bounty dari Kreen Indonesia 2022.",
+    "category": "Bug Bounty",
+    "year": "2022"
+  },
+  {
+    "title": "Gemastik XIII 2020 — Capture The Flag Finalist",
+    "image": "assets/img/portfolio/gemastikgayu.jpg",
+    "description": "Finalis Capture The Flag pada Gemastik XIII 2020.",
+    "category": "Prestasi",
+    "year": "2020"
+  },
+  {
+    "title": "KKSI 2019 — Capture The Flag Finalist",
+    "image": "assets/img/portfolio/kksigayu.jpg",
+    "description": "Finalis Capture The Flag pada KKSI 2019.",
+    "category": "Prestasi",
+    "year": "2019"
+  },
+  {
+    "title": "Certified Network Security Practitioner (CNSP)",
+    "image": "assets/img/portfolio/cnsp_gayugumelar.jpg",
+    "description": "Certified Network Security Practitioner (CNSP).",
+    "category": "Sertifikasi",
+    "year": "2023"
+  },
+  {
+    "title": "Ethical Hacking Essentials (EHE) v1",
+    "image": "assets/img/portfolio/ehegayu.jpg",
+    "description": "Ethical Hacking Essentials (EHE) v1 — EC-Council.",
+    "category": "Sertifikasi",
+    "year": "2023"
+  },
+  {
+    "title": "Learn the Basics of DevOps",
+    "image": "assets/img/portfolio/dicoding-devops-gayugumelar.jpg",
+    "description": "Learn the Basics of DevOps — Dicoding Course.",
+    "category": "Kursus",
+    "year": "2022"
+  },
+  {
+    "title": "Learn Basic Web Programming",
+    "image": "assets/img/portfolio/dicoding-web-gayugumelar.jpg",
+    "description": "Learn Basic Web Programming — Dicoding Course.",
+    "category": "Kursus",
+    "year": "2022"
+  },
+  {
+    "title": "Learn Computer Networking for Beginners",
+    "image": "assets/img/portfolio/dicoding-network-gayugumelar.jpg",
+    "description": "Learn Computer Networking for Beginners — Dicoding Course.",
+    "category": "Kursus",
+    "year": "2022"
+  },
+  {
+    "title": "Asisten Dosen",
+    "image": "assets/img/portfolio/asdosgayu.jpg",
+    "description": "Sertifikat sebagai Asisten Dosen.",
+    "category": "Prestasi",
+    "year": "2021"
+  },
+  {
+    "title": "Workshop Web Programming",
+    "image": "assets/img/portfolio/workshopweb_gayu.jpg",
+    "description": "Sertifikat Workshop Web Programming.",
+    "category": "Pelatihan",
+    "year": "2021"
+  }
+]

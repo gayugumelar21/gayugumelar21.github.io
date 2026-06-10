@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Artikel — Gayu Gumelar</title>
+  <meta name="description" content="Artikel Gayu Gumelar." />
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Markdown renderer -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@12.0.0/marked.min.js"></script>
+</head>
+<body id="top">
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a class="brand" href="index.html">Gayu<span>Gumelar</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#portfolio">Portfolio</a></li>
+        <li><a href="articles.html" class="active">Artikel</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Kontak</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="article-hero" id="article-hero"></header>
+  <main class="article-content" id="article-content">
+    <p class="empty-state"><i class="fa-solid fa-spinner fa-spin"></i> Memuat artikel...</p>
+  </main>
+
+  <footer class="footer" id="footer"></footer>
+
+  <script src="js/site.js"></script>
+  <script src="js/article.js"></script>
+</body>
+</html>
