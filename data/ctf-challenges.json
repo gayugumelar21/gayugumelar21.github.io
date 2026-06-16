@@ -1,0 +1,94 @@
+{
+  "config": {
+    "title": "Gayu CTF",
+    "subtitle": "Latihan Capture The Flag — asah skill cyber security kamu di sini.",
+    "flagFormat": "GGCTF{...}",
+    "caseInsensitive": false
+  },
+  "challenges": [
+    {
+      "id": "misc-welcome",
+      "title": "Selamat Datang",
+      "category": "Misc",
+      "difficulty": "Easy",
+      "points": 25,
+      "released": true,
+      "author": "Gayu",
+      "description": "Setiap CTF butuh pemanasan. Flag-nya ada tepat di depan matamu:\n\n```\nGGCTF{w3lc0m3_t0_gayu_ctf}\n```\n\nSalin flag di atas, tempel ke kolom **Submit Flag**, lalu tekan kirim. Selamat datang di Gayu CTF!",
+      "hint": "Tidak ada trik. Salin saja flag di deskripsi.",
+      "files": [],
+      "link": "",
+      "flagHash": "da7b60674e1801d73e18eeab4bccccda8169619a3e8996a98ef317df106cc9b0"
+    },
+    {
+      "id": "web-robots",
+      "title": "Robots Rahasia",
+      "category": "Web",
+      "difficulty": "Easy",
+      "points": 50,
+      "released": true,
+      "author": "Gayu",
+      "description": "Mesin pencari selalu mengintip file tertentu di setiap website sebelum merayapi halaman. File apa itu? Coba lihat apa yang biasanya disembunyikan admin di sana — kadang ada jalur yang tidak mau mereka tampilkan ke publik.\n\nLatih dengan website target latihanmu sendiri, lalu temukan polanya.",
+      "hint": "Cek `/robots.txt` dan `/sitemap.xml`. Admin sering 'menyembunyikan' path rahasia justru di robots.txt.",
+      "files": [],
+      "link": "",
+      "flagHash": "8d144ef4879fef93c0af815f8a18644bafea8a05aad5c98f8f7af3524f36dcff"
+    },
+    {
+      "id": "crypto-base64",
+      "title": "Bukan Enkripsi",
+      "category": "Crypto",
+      "difficulty": "Easy",
+      "points": 50,
+      "released": true,
+      "author": "Gayu",
+      "description": "Pemula sering mengira ini enkripsi, padahal cuma *encoding*. Pecahkan pesan berikut:\n\n```\nR0dDVEZ7YmFzZTY0X2J1a2FuX2Vua3JpcHNpfQ==\n```",
+      "hint": "Akhiran `==` adalah ciri khas Base64. Decode saja (CyberChef / `base64 -d` / `atob()`).",
+      "files": [],
+      "link": "",
+      "flagHash": "61d5a6c416a9a9e90f6b8fcc0d8081c2afa8dd2cb9351d9244502aac9c1a8e6b"
+    },
+    {
+      "id": "crypto-rot13",
+      "title": "Salad Caesar",
+      "category": "Crypto",
+      "difficulty": "Easy",
+      "points": 75,
+      "released": true,
+      "author": "Gayu",
+      "description": "Seorang kaisar Romawi suka menggeser huruf-hurufnya. Geser balik pesan ini sebanyak 13 langkah:\n\n```\nTTPGS{p4rfne_f4ynq_ebg13}\n```",
+      "hint": "Ini ROT13 — geser tiap huruf 13 posisi. Perhatikan bahkan 'GGCTF' pun ikut tergeser jadi 'TTPGS'.",
+      "files": [],
+      "link": "",
+      "flagHash": "f22945327b62be04d6964d3beeaf5c056fb2ad25f7981a7e757f2e699fc2be33"
+    },
+    {
+      "id": "web-cookie",
+      "title": "Cookie Monster",
+      "category": "Web",
+      "difficulty": "Medium",
+      "points": 100,
+      "released": true,
+      "author": "Gayu",
+      "description": "Banyak aplikasi menyimpan status login di sisi browser. Buka **DevTools → Application → Cookies** di website latihanmu. Kadang developer ceroboh menaruh data sensitif di sana, bahkan flag.\n\nUntuk soal ini, jalankan perintah berikut di Console browser ini lalu baca hasilnya:\n\n```js\nconsole.log(atob('R0dDVEZ7YzAwazEzX20wbnN0M3JfbnVtX251bX0='))\n```",
+      "hint": "Jalankan snippet di Console (F12). Hasilnya adalah flag-nya.",
+      "files": [],
+      "link": "",
+      "flagHash": "1322adecd77adbde6398c35956480adb03d10748d85e07d93253f50ec3f7bc28"
+    },
+    {
+      "id": "web-inspect",
+      "title": "Inspect Element",
+      "category": "Web",
+      "difficulty": "Medium",
+      "points": 100,
+      "released": true,
+      "author": "Gayu",
+      "description": "Senjata pertama setiap pemburu bug adalah **View Source**. Komentar HTML, atribut data, dan file JS sering menyimpan rahasia.\n\nPetunjuk untuk soal ini sengaja disembunyikan di dalam halaman CTF ini. Buka source / inspect element dan cari komentar yang diawali `CTF-HINT`.",
+      "hint": "Klik kanan halaman ini → View Page Source, lalu Ctrl+F cari 'CTF-HINT'.",
+      "files": [],
+      "link": "",
+      "flagHash": "f2a9fafee81a62cfdc6b292e4bb1b463f139032be42c74d1b9f8478014d02845"
+    }
+  ]
+}

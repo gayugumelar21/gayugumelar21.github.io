@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gayu CTF — Capture The Flag</title>
+  <meta name="description" content="Platform Capture The Flag (CTF) latihan oleh Gayu Gumelar. Pecahkan soal Web, Crypto, dan Misc untuk mengasah skill cyber security." />
+  <meta name="author" content="Gayu Gumelar" />
+  <meta property="og:title" content="Gayu CTF — Capture The Flag" />
+  <meta property="og:description" content="Asah skill cyber security: pecahkan soal CTF dan kumpulkan poin." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/ctf.css" />
+
+  <!-- =========================================================
+       CTF-HINT (soal "Inspect Element"):
+       Bagus! Kamu menemukan komentar tersembunyi ini.
+       Flag soal Inspect Element (encoded base64):
+         R0dDVEZ7MW5zcDNjdF8zbDNtM250X2Z0d30=
+       Decode base64 di atas untuk mendapatkan flag-nya.
+       ========================================================= -->
+</head>
+<body id="top" class="ctf-body">
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a class="brand" href="../index.html">Gayu<span>Gumelar</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../articles.html">Artikel</a></li>
+        <li><a href="index.html" class="active">CTF Labs</a></li>
+        <li><a href="#" id="ctf-auth-link"><i class="fa-solid fa-right-to-bracket"></i> Masuk</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="ctf-hero">
+    <div class="container">
+      <div class="ctf-badge"><i class="fa-solid fa-flag"></i> Capture The Flag</div>
+      <h1 id="ctf-title">Gayu CTF</h1>
+      <p class="lead" id="ctf-subtitle">Memuat…</p>
+      <p class="ctf-flagfmt">Format flag: <code id="ctf-flagfmt">GGCTF{...}</code></p>
+
+      <!-- Player stat bar (shown when logged in) -->
+      <div class="ctf-statbar" id="ctf-statbar" hidden>
+        <div class="ctf-stat"><span class="num" id="stat-score">0</span><span class="lbl">Poin</span></div>
+        <div class="ctf-stat"><span class="num" id="stat-solved">0</span><span class="lbl">Terpecahkan</span></div>
+        <div class="ctf-stat"><span class="num" id="stat-total">0</span><span class="lbl">Total Soal</span></div>
+        <div class="ctf-stat"><span class="num" id="stat-rank">—</span><span class="lbl">Peringkat</span></div>
+      </div>
+
+      <div class="ctf-hero-actions">
+        <a href="#challenges" class="btn btn-primary"><i class="fa-solid fa-puzzle-piece"></i> Lihat Soal</a>
+        <button class="btn btn-outline" id="ctf-scoreboard-btn"><i class="fa-solid fa-ranking-star"></i> Papan Skor</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Not-logged-in notice -->
+  <div class="container">
+    <div class="ctf-loginhint" id="ctf-loginhint">
+      <i class="fa-solid fa-circle-info"></i>
+      <span>Daftar dengan nama tim untuk mulai mengumpulkan poin. <a href="#" id="ctf-loginhint-link">Daftar / Masuk sekarang →</a></span>
+    </div>
+  </div>
+
+  <!-- Challenges -->
+  <section class="section" id="challenges">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">Soal</div>
+        <h2>Daftar Tantangan</h2>
+        <p>Pilih kategori, pecahkan soal, dan submit flag untuk mendapatkan poin.</p>
+      </div>
+
+      <div class="filter-bar" id="ctf-filters"></div>
+      <div class="ctf-progress-wrap" id="ctf-progress-wrap" hidden>
+        <div class="ctf-progress"><div class="ctf-progress-fill" id="ctf-progress-fill"></div></div>
+        <span class="ctf-progress-label" id="ctf-progress-label"></span>
+      </div>
+
+      <div class="ctf-grid" id="ctf-grid">
+        <div class="empty-state">Memuat soal…</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Challenge modal -->
+  <div class="ctf-modal" id="ctf-modal" aria-hidden="true">
+    <div class="ctf-modal-card">
+      <button class="lightbox-close" id="ctf-modal-close" aria-label="Tutup">&times;</button>
+      <div class="ctf-modal-head">
+        <span class="ctf-cat-badge" id="m-category"></span>
+        <span class="ctf-diff" id="m-difficulty"></span>
+        <span class="ctf-pts" id="m-points"></span>
+      </div>
+      <h3 id="m-title"></h3>
+      <div class="ctf-modal-meta" id="m-author"></div>
+      <div class="ctf-desc" id="m-description"></div>
+      <div class="ctf-files" id="m-files"></div>
+
+      <div class="ctf-hint-box" id="m-hint-box" hidden>
+        <button class="btn btn-light btn-sm" id="m-hint-toggle"><i class="fa-solid fa-lightbulb"></i> Tampilkan Hint</button>
+        <p class="ctf-hint-text" id="m-hint-text" hidden></p>
+      </div>
+
+      <form class="ctf-submit" id="m-submit-form">
+        <label for="m-flag">Submit Flag</label>
+        <div class="ctf-submit-row">
+          <input type="text" id="m-flag" placeholder="GGCTF{...}" autocomplete="off" spellcheck="false" />
+          <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Kirim</button>
+        </div>
+        <div class="ctf-submit-msg" id="m-submit-msg"></div>
+      </form>
+
+      <div class="ctf-solved-banner" id="m-solved-banner" hidden>
+        <i class="fa-solid fa-circle-check"></i> Sudah kamu pecahkan! +<span id="m-solved-pts"></span> poin
+      </div>
+    </div>
+  </div>
+
+  <!-- Auth modal (register / login: nama tim + password) -->
+  <div class="ctf-modal" id="ctf-auth-modal" aria-hidden="true">
+    <div class="ctf-modal-card ctf-auth-card">
+      <button class="lightbox-close" id="ctf-auth-close" aria-label="Tutup">&times;</button>
+      <i class="fa-solid fa-user-secret ctf-auth-icon"></i>
+      <h3>Masuk ke CTF Labs</h3>
+      <p class="ctf-auth-sub">Daftar atau login dengan nama tim &amp; password. Skor tersimpan di server — bisa lanjut dari perangkat mana pun.</p>
+
+      <div class="ctf-auth-tabs">
+        <button type="button" class="ctf-auth-tab active" data-mode="register">Daftar</button>
+        <button type="button" class="ctf-auth-tab" data-mode="login">Login</button>
+      </div>
+
+      <form id="ctf-auth-form">
+        <div class="form-group">
+          <label>Nama Tim / Nickname</label>
+          <input type="text" id="ctf-name" placeholder="cth: h4ck3r_gayu" maxlength="24" autocomplete="username" />
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="ctf-pass" placeholder="min. 4 karakter" autocomplete="current-password" />
+        </div>
+        <button type="submit" class="btn btn-primary" id="ctf-auth-submit" style="width:100%"><i class="fa-solid fa-user-plus"></i> Daftar &amp; Main</button>
+        <div class="ctf-submit-msg" id="ctf-auth-msg"></div>
+      </form>
+      <p class="ctf-auth-note"><i class="fa-solid fa-circle-info"></i> Password disimpan dalam bentuk hash di Google Sheet milikmu. Jangan pakai password penting/akun lain.</p>
+    </div>
+  </div>
+
+  <!-- Scoreboard modal -->
+  <div class="ctf-modal" id="ctf-score-modal" aria-hidden="true">
+    <div class="ctf-modal-card">
+      <button class="lightbox-close" id="ctf-score-close" aria-label="Tutup">&times;</button>
+      <h3><i class="fa-solid fa-ranking-star"></i> Papan Skor</h3>
+      <p class="ctf-auth-sub">Peringkat global semua tim — diperbarui real-time.</p>
+      <div class="ctf-scoretable" id="ctf-scoretable"></div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="ctf-toast" id="ctf-toast" hidden></div>
+
+  <footer class="footer" id="footer"></footer>
+
+  <script src="../js/site.js"></script>
+  <script src="../js/ctf-config.js"></script>
+  <script src="../js/ctf.js"></script>
+</body>
+</html>

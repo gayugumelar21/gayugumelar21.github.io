@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin CTF — Gayu Gumelar</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <!-- Password gate (sama dengan editor artikel) -->
+  <script src="../js/admin-gate.js"></script>
+</head>
+<body id="top">
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a class="brand" href="../index.html">Gayu<span>Gumelar</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="index.html">CTF Labs</a></li>
+        <li><a href="admin.html" class="active">Admin CTF</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="admin-wrap">
+    <div class="section-head" style="text-align:left;margin-bottom:24px">
+      <div class="eyebrow">Admin CTF</div>
+      <h2>Buat &amp; Publish Soal CTF</h2>
+    </div>
+
+    <div class="alert alert-info">
+      <strong>Mode Spreadsheet:</strong> Soal sekarang disimpan di <strong>Google Sheet</strong> (tab <code>Challenges</code>).
+      Isi form → klik <em>Generate</em> → klik <em>Salin baris</em> → di Google Sheet, klik sel kolom <code>id</code>
+      pada baris kosong berikutnya → <strong>Paste (Ctrl+V)</strong>. Flag (kolom paling kanan) disimpan apa adanya
+      dan <strong>dicek di server</strong>, tidak pernah dikirim ke browser peserta.
+    </div>
+
+    <!-- ===== NEW CHALLENGE ===== -->
+    <div class="admin-panel" id="panel-new">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Judul Soal *</label>
+          <input type="text" id="ch-title" placeholder="Robots Rahasia" />
+        </div>
+        <div class="form-group">
+          <label>ID (slug, unik)</label>
+          <input type="text" id="ch-id" placeholder="otomatis dari judul" />
+          <div class="hint">Dipakai untuk menyimpan status solve. Harus unik.</div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Kategori</label>
+          <input type="text" id="ch-category" placeholder="Web / Crypto / Forensics / Misc / Pwn / Reverse" list="cat-list" />
+          <datalist id="cat-list">
+            <option>Web</option><option>Crypto</option><option>Forensics</option>
+            <option>Misc</option><option>Pwn</option><option>Reverse</option>
+            <option>OSINT</option><option>Steganografi</option>
+          </datalist>
+        </div>
+        <div class="form-group">
+          <label>Kesulitan</label>
+          <select id="ch-difficulty">
+            <option>Easy</option><option>Medium</option><option>Hard</option><option>Insane</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Poin</label>
+          <input type="number" id="ch-points" value="100" min="0" step="25" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Deskripsi (Markdown)</label>
+        <textarea id="ch-description" placeholder="Tulis cerita/soal di sini. Mendukung **bold**, `code`, ```blok kode```, list, dan [link](https://...)."></textarea>
+        <div class="hint">Mendukung Markdown sederhana: **tebal**, *miring*, `kode`, ```blok```, - list, [teks](url).</div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Flag (teks asli) *</label>
+          <input type="text" id="ch-flag" placeholder="GGCTF{contoh_flag}" autocomplete="off" />
+          <div class="hint">Disimpan di kolom <code>flag</code> &amp; dicek di server.</div>
+        </div>
+        <div class="form-group">
+          <label>Author</label>
+          <input type="text" id="ch-author" value="Gayu" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Hint (opsional)</label>
+        <input type="text" id="ch-hint" placeholder="Petunjuk kecil untuk peserta yang stuck" />
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>URL Lampiran (opsional)</label>
+          <input type="text" id="ch-file-url" placeholder="https://.../challenge.zip" />
+        </div>
+        <div class="form-group">
+          <label>Nama Lampiran</label>
+          <input type="text" id="ch-file-name" placeholder="challenge.zip" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Link Tantangan (opsional)</label>
+        <input type="text" id="ch-link" placeholder="https://target-latihan.example.com" />
+      </div>
+
+      <button class="btn btn-primary" id="ch-build"><i class="fa-solid fa-gears"></i> Generate</button>
+
+      <div id="ch-output" style="display:none;margin-top:28px">
+        <h3 style="margin-bottom:6px">Baris untuk tab <code>Challenges</code> (urutan kolom sudah benar)</h3>
+        <div style="display:flex;gap:8px;margin:10px 0;flex-wrap:wrap">
+          <button class="btn btn-primary" id="ch-copy"><i class="fa-solid fa-copy"></i> Salin baris</button>
+        </div>
+        <div class="alert alert-info" style="font-size:.85rem">
+          Di Google Sheet: klik sel kolom <strong>id</strong> di baris kosong → <strong>Ctrl+V</strong>.
+          Satu baris otomatis terisi ke 12 kolom (id … flag).
+        </div>
+        <div class="output-box" id="ch-out-json"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer" id="footer"></footer>
+
+  <script src="../js/site.js"></script>
+  <script src="../js/ctf-admin.js"></script>
+</body>
+</html>
